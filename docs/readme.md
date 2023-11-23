@@ -7,8 +7,7 @@ runme:
 folder config : use config for whole project
 .env : config but information sensitive
 
-
-```sh
+```sh {"id":"01HFW4CH53YMNK8QJEXPV3VCXT"}
 PORT =3052
 // when run in productions replace dev --> pro
 NODE_ENV= dev
@@ -24,3 +23,13 @@ PRO_DB_HOST  =''
 PRO_DB_PORT  =''
 PRO_DB_NAME  =''
 ```
+
+### How to run project
+
+check file : env , config
+check package.json
+check branch common we have three branch : main / dev
+
+### Organize files in project
+- controller handler  req from browser (http request ),
+ request client upload have object have header 
