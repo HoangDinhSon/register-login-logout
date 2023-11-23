@@ -26,10 +26,19 @@ PRO_DB_NAME  =''
 
 ### How to run project
 
-check file : env , config
-check package.json
-check branch common we have three branch : main / dev
+- check file : env , config
+- check package.json 
+- check branch common we have three branch : main / dev
+- check connect to DB 
+- check router 
+check files below
+- src\dbs\init.mongodb.js
+- auth 
 
 ### Organize files in project
+
 - controller handler  req from browser (http request ),
- request client upload have object have header 
+   request client upload have object have header
+
+### Models use for DB
+- model in mongoose is instance of collection in DB , and if you 
