@@ -5,6 +5,7 @@ const crypto = require('crypto')
 const KeyTokenService = require('./keyToken.service')
 const { createTokenPair } = require("../auth/authUtils")
 const { getInfoData } = require('../utils/index')
+const { BadRequestError } = require("../core/error.response")
 const RoleShop = {
     SHOP: "SHOP",
     WRITER: "WRITER",
@@ -13,33 +14,17 @@ const RoleShop = {
 }
 class AccessService {
     static signUp = async ({ name, email, password }) => {
-        try {
+      
             // check email exist
             const holderShop = await shopModel.findOne({ email }).lean()
             if (holderShop) {
-                return {
-                    code: 'xxxx',
-                    message: 'Shop already register'
-                }
+                throw new BadRequestError("Error Shop already register")
             }
             const passwordHash = await bcrypt.hash(password, 10)
             const newShop = await shopModel.create({
                 name, email, password: passwordHash, roles: [RoleShop.SHOP]
             })
             if (newShop) {
-                // create accessToken and refresh Token  
-                // created private key : sign token store :??? , publicKey : verify token store in DB 
-                // const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-                //     modulusLength: 4096,
-                //     publicKeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     },
-                //     privateKeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     }
-                // })
                 const privateKey = crypto.randomBytes(64).toString('hex')
                 const publicKey = crypto.randomBytes(64).toString('hex')
                 console.log({ privateKey, publicKey });
@@ -49,6 +34,7 @@ class AccessService {
                     privateKey
                 })
                 if (!keyStore) {
+                   // throw new BadRequestError("Error Shop already register")
                     return {
                         code: "xxxx",
                         message: "keyStore error"
@@ -66,14 +52,7 @@ class AccessService {
                 code: 200,
                 metadata: null
             }
-        } catch (error) {
-            console.error(error)
-            return {
-                code: 'xxx',
-                message: error.message,
-                status: 'error'
-            }
-        }
+      
     }
 }
 // why don't have use new because we use static in class
