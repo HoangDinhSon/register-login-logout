@@ -17,10 +17,11 @@ var keyTokenSchema = new Schema({
         type: String,
         require: true
     },
-    refreshToken: {
+    refreshTokensUsed: {// nhung refresh token da su dung
         type: Array,
         default: []
-    }
+    },
+    refreshToken: { type: String, required: true }
 }, {
     collection: COLLECTION_NAME,
     timestamps: true

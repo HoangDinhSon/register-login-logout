@@ -29,4 +29,4 @@ class CREATED extends SuccessResponse {
         super({ message, metadata ,statusCode, reasonStatuscode})
     }
 }
-module.exports=  {OK, CREATED}
+module.exports=  {OK, CREATED,SuccessResponse}
