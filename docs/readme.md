@@ -31,6 +31,7 @@ PRO_APP_PORT =''
 PRO_DB_HOST  =''
 PRO_DB_PORT  =''
 PRO_DB_NAME  =''
+
 ```
 
 ### Organize files in project
@@ -38,23 +39,29 @@ PRO_DB_NAME  =''
 - controller handler  req from browser (http request ),
    request client upload have object have header
 - models folder
+
    - use define collection in database
 
 - service
+
    - use communication between database and nodejs
 
 - dbs
    -use set up connect database
 - utils
+
    - handle function reuse for project
 
 - router
+
    - define router
 
 - core
+
    - handle response success and error
 
 - auth
+
    - file authentication for project
 
 ---
@@ -66,6 +73,13 @@ PRO_DB_NAME  =''
 - handle router login  for shop
 
 ### Commit Logout
-1. Check if the correct user is logged in or not : run function authentication before router logout 
 
+1. Check if the correct user is logged in or not : run function authentication before router logout
 2. 
+
+### Commit handle refresh Token 
+- read model keyStory 
+- client send refreshToken 
+- server check refresh token in Database array refreshTokenUsed 
+- if everything oke will be make pair new token and refresh token , concurrent save push refresh token present to araray and update refreshToken 
+ note : in use mongoose can update 
