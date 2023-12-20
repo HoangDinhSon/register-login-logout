@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "node --watch server.js",
-            "name": "Run node --watch server.js",
+            "command": "node server.js",
+            "name": "Run node  server.js",
             "request": "launch",
             "type": "node-terminal"
         }
